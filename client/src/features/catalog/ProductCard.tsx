@@ -30,13 +30,17 @@ export default function ProductCard({ product }: Props) {
         }}
       />
       <CardMedia
-        sx={{ height: 140, backgroundSize: "contain", bgcolor: "primary.light" }}
+        sx={{
+          height: 140,
+          backgroundSize: "contain",
+          bgcolor: "primary.light",
+        }}
         image={product.pictureUrl}
         title={product.name}
       />
       <CardContent>
         <Typography gutterBottom color="secondary" variant="h5">
-          $ {product.price.toFixed(2)}
+          $ {(product.price / 100).toFixed(2)}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {product.brand} / {product.type}
@@ -44,7 +48,9 @@ export default function ProductCard({ product }: Props) {
       </CardContent>
       <CardActions>
         <Button size="small">Add to cart</Button>
-        <Button component={Link} to={`/catalog/${product.id}`} size="small">View</Button>
+        <Button component={Link} to={`/catalog/${product.id}`} size="small">
+          View
+        </Button>
       </CardActions>
     </Card>
   );
