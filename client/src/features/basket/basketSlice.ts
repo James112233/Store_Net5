@@ -46,7 +46,8 @@ export const basketSlice = createSlice({
         //     const itemIndex = state.basket?.items.findIndex(i => i.productId === productId);
         //     if (itemIndex === -1 || itemIndex === undefined) return;
         //     state.basket!.items[itemIndex].quantity -= quantity;
-        //     if (state.basket?.items[itemIndex].quantity === 0) state.basket.items.slice(itemIndex, 1);
+        //     if (state.basket?.items[itemIndex].quantity === 0) 
+        //        state.basket.items.splice(itemIndex, 1);
         // }
     },
     extraReducers: (builder => {
@@ -58,9 +59,8 @@ export const basketSlice = createSlice({
             state.basket = action.payload;
             state.status = 'idle';
         });
-        builder.addCase(addBasketItemAsync.rejected, (state, action) => {
+        builder.addCase(addBasketItemAsync.rejected, (state) => {
             state.status = 'idle';
-            console.log(action.payload)
         });
         builder.addCase(removeBasketItemAsync.pending, (state, action) => {
             state.status = 'pendingRemoveItem' + action.meta.arg.productId + action.meta.arg.name;
@@ -70,13 +70,13 @@ export const basketSlice = createSlice({
             const itemIndex = state.basket?.items.findIndex(i => i.productId === productId);
             if (itemIndex === -1 || itemIndex === undefined) return;
             state.basket!.items[itemIndex].quantity -= quantity;
-            if (state.basket?.items[itemIndex].quantity === 0) state.basket.items.slice(itemIndex, 1);
-            console.log("itemRemove: ", itemIndex)
+            if (state.basket?.items[itemIndex].quantity === 0) state.basket.items.splice(itemIndex, 1);
+            // console.log("itemRemove: ", itemIndex)
             state.status = 'idle';
-        });
-        builder.addCase(removeBasketItemAsync.rejected, (state, action) => {
+        }); 
+        builder.addCase(removeBasketItemAsync.rejected, (state) => {
             state.status = 'idle';
-            console.log(action.payload);
+            // console.log(action.payload);
         })
     })
 })

@@ -1,0 +1,7 @@
+{
+    "files.autoSave": "afterDelay",
+    "window.autoDetectColorScheme": true,
+    "workbench.editor.autoLockGroups": {
+        "default": true
+    }
+}
