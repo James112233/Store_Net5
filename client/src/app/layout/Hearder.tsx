@@ -1,14 +1,5 @@
 import { ShoppingCart } from "@mui/icons-material";
-import {
-  AppBar,
-  Badge,
-  IconButton,
-  List,
-  ListItem,
-  Switch,
-  Toolbar,
-  Typography,
-} from "@mui/material";
+import { AppBar, Badge, IconButton, List, ListItem, Switch, Toolbar, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { Link, NavLink } from "react-router-dom";
 // import { useStoreContext } from "../context/StoreContext";

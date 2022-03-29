@@ -8,7 +8,7 @@ export default function ContactPage() {
   const dispatch = useAppDispatch();
   // const { data, title } = useSelector((state: CounterState) => state);
   const { data, title } = useAppSelector(state => state.counter);
-
+ 
   return (
     <>
       <Typography variant="h2">{title}</Typography>

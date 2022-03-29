@@ -33,6 +33,7 @@ export default function Catalog() {
     productParams,
     metaData,
   } = useAppSelector((state) => state.catalog);
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
