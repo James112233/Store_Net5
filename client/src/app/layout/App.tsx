@@ -26,6 +26,7 @@ import Register from "../../features/account/Register";
 import { fetchCurrentUser } from "../../features/account/accountSlice";
 import PrivateRoute from "./PrivateRoute";
 import Orders from "../../features/orders/Orders";
+import { render } from "@testing-library/react";
 
 function App() {
   // const { setBasket } = useStoreContext();
@@ -67,22 +68,27 @@ function App() {
       <ToastContainer position="bottom-right" hideProgressBar />
       <CssBaseline />
       <Header darkMode={darkMode} themeChangeHandler={themeChangeHandler} />
-      <Container>
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/catalog" component={Catalog} />
-          <Route path="/catalog/:id" component={ProductDetails} />
-          <Route path="/about" component={AboutPage} />
-          <Route path="/contact" component={ContactPage} />
-          <Route path="/server-error" component={ServerError} />
-          <Route path="/basket" component={BasketPage} />
-          <PrivateRoute path="/checkout" component={CheckoutPage} />
-          <PrivateRoute path="/orders" component={Orders} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route component={NotFound} />
-        </Switch>
-      </Container>
+      <Route exact path="/" component={HomePage} />
+      <Route
+        path={"/(.+)"}
+        render={() => (
+          <Container  sx={{ mt: 4 }}>
+            <Switch>
+              <Route exact path="/catalog" component={Catalog} />
+              <Route path="/catalog/:id" component={ProductDetails} />
+              <Route path="/about" component={AboutPage} />
+              <Route path="/contact" component={ContactPage} />
+              <Route path="/server-error" component={ServerError} />
+              <Route path="/basket" component={BasketPage} />
+              <PrivateRoute path="/checkout" component={CheckoutPage} />
+              <PrivateRoute path="/orders" component={Orders} />
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
+              <Route component={NotFound} />
+            </Switch>
+          </Container>
+        )}
+      />
     </ThemeProvider>
   );
 }
