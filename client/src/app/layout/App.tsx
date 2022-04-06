@@ -1,4 +1,3 @@
-import Catalog from "../../features/catalog/Catalog";
 import {
   Container,
   createTheme,
@@ -8,6 +7,7 @@ import {
 import Header from "./Hearder";
 import { useCallback, useEffect, useState } from "react";
 import HomePage from "../../features/home/HomePage";
+import Catalog from "../../features/catalog/Catalog";
 import ProductDetails from "../../features/catalog/ProductDetails";
 import AboutPage from "../../features/about/AboutPage";
 import ContactPage from "../../features/contact/ContactPage";
@@ -26,7 +26,7 @@ import Register from "../../features/account/Register";
 import { fetchCurrentUser } from "../../features/account/accountSlice";
 import PrivateRoute from "./PrivateRoute";
 import Orders from "../../features/orders/Orders";
-import { render } from "@testing-library/react";
+import Inventory from "../../features/admin/Inventory";
 
 function App() {
   // const { setBasket } = useStoreContext();
@@ -82,6 +82,7 @@ function App() {
               <Route path="/basket" component={BasketPage} />
               <PrivateRoute path="/checkout" component={CheckoutPage} />
               <PrivateRoute path="/orders" component={Orders} />
+              <PrivateRoute roles={["Admin"]} path="/inventory" component={Inventory} />
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
               <Route component={NotFound} />
