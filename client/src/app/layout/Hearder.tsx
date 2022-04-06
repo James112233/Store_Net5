@@ -1,5 +1,14 @@
 import { ShoppingCart } from "@mui/icons-material";
-import { AppBar, Badge, IconButton, List, ListItem, Switch, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Badge,
+  IconButton,
+  List,
+  ListItem,
+  Switch,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import { Link, NavLink } from "react-router-dom";
 // import { useStoreContext } from "../context/StoreContext";
@@ -68,6 +77,11 @@ export default function Header({ darkMode, themeChangeHandler }: Props) {
               {title.toUpperCase()}
             </ListItem>
           ))}
+          {user && user.roles?.includes("Admin") && (
+            <ListItem component={NavLink} to={"/inventory"} sx={navStyle}>
+              INVENTORY
+            </ListItem>
+          )}
         </List>
 
         <Box display="flex" alignItems="center">
